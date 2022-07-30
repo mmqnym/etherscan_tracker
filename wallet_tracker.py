@@ -19,7 +19,7 @@ def get_records( wal_addr )->list:
 
     try:
         # get block number from timestamp
-        response = requests.get( f'https://api.etherscan.io/api?module=block&action=getblocknobytime&timestamp={timestamp}&closest=before&apikey={c_api_key},
+        response = requests.get( f'https://api.etherscan.io/api?module=block&action=getblocknobytime&timestamp={timestamp}&closest=before&apikey={api_key},
                                  headers = headers)
         block_num = json.loads( response.text ).get( 'result' )
 
@@ -28,7 +28,7 @@ def get_records( wal_addr )->list:
         response = requests.get( 'https://api.etherscan.io/api?module=account&action=txlist' +
                                  f'&address={target_wallet_addr}' + 
                                  f'&startblock={block_num}&endblock=99999999&page=1&offset=10&sort=asc' +
-                                 '&apikey={c_api_key}',
+                                 f'&apikey={api_key}',
                                  headers = headers )
 
         records = json.loads( response.text ).get( 'result' )
