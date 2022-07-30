@@ -51,6 +51,7 @@ def get_records(wal_addr)->list:
                         break
                 # for
 
+                # Tanslate to Mandarin
                 action = action.replace('Swap', '將 ').replace('For', ' 交換成 ').replace('On', ' 於 ')
                 action = action[action.find('於'):] + '，' + action[action.find('將'):action.find('於') - 1] + '@' + blockchain_tx_base + tx
 
